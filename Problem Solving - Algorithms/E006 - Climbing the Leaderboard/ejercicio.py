@@ -39,10 +39,13 @@ def climbingLeaderboard(scores, alice):
     minimo = min(totalPuntaje)
     maximo = max(totalPuntaje)
     ultimaPosicion = len(totalPuntaje) + 1
-    valoresMenores = len([x for x in alicePuntaje if x <= minimo])
+
+    valoresMenores = len([x for x in alicePuntaje if x < minimo])
     retorno += [1] * valoresMenores
+
     valoresMayores = len([x for x in alicePuntaje if x >= maximo])
     retorno += [ultimaPosicion] * valoresMayores
+
     alicePuntaje = alicePuntaje[(valoresMenores):(len(alicePuntaje) - valoresMayores)]
 
     for valor in alicePuntaje:
@@ -50,7 +53,6 @@ def climbingLeaderboard(scores, alice):
         retorno.append(len(totalPuntaje) + 1)
 
     return sorted(retorno, reverse=True)
-    # Complete this function
 
 if __name__ == "__main__":
     n = 7 #int(input().strip())
