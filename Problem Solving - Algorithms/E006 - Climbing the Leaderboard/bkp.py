@@ -96,4 +96,34 @@ def climbingLeaderboard(scores, alice):
     return sorted(list(retorno), reverse=True)
 
 
+2018-02-14 2135
+def climbingLeaderboard(scores, alice):
+    if len(scores) == 0:
+        return [1] * len(alice)
+
+    if len(alice) == 0:
+        return []
+
+    retorno = []
+    totalPuntaje = sorted(list(set(map(int, scores))), reverse=True)
+    alicePuntaje = list(map(int, alice))
+    ultimaPosicion = len(totalPuntaje) + 1
+    minimo = totalPuntaje[ultimaPosicion-2]
+    maximo = totalPuntaje[0]
     
+    valoresMenores = len([x for x in alicePuntaje if x < minimo])
+    retorno += [ultimaPosicion] * valoresMenores
+    valoresMayores = len([x for x in alicePuntaje if x >= maximo])
+    retorno += [1] * valoresMayores
+    alicePuntaje = alicePuntaje[(valoresMenores):(len(alicePuntaje) - valoresMayores)]
+    listaPuntajes = sorted(totalPuntaje)
+    for valor in alicePuntaje:
+        contador = 0
+        for elem in listaPuntajes:
+            if valor < elem:
+                ultimaPosicion -= contador
+                listaPuntajes = listaPuntajes[contador:]
+                retorno.append(ultimaPosicion)
+                break
+            contador += 1
+    return sorted(list(retorno), reverse=True)
