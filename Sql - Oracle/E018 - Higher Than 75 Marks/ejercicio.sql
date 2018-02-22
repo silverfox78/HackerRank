@@ -5,13 +5,12 @@
 Enter your query here.
 Please append a semicolon ";" at the end of the query and enter your query in a single line to avoid error.
 */
-SELECT NAME, row_number() over (partition by ID order by NAME, ID) as rn, LOWER(SUBSTR(NAME, LENGTH(NAME) - 2, 3))
+SELECT NAME
 FROM STUDENTS
 WHERE MARKS > 75
-/*AND LOWER(SUBSTR(NAME, LENGTH(NAME) - 3, 3)) IN (SELECT DISTINCT LOWER(SUBSTR(NAME, LENGTH(NAME) - 3, 3)) FROM STUDENTS)*/
-ORDER BY LOWER(SUBSTR(NAME, LENGTH(NAME) - 2, 3)), ID;
-
-
-https://dba.stackexchange.com/questions/6368/how-to-select-the-first-row-of-each-group
-
-https://asktom.oracle.com/pls/apex/asktom.search?tag=howto-select-first-value-in-a-group-by-bunch-of-rows
+AND LOWER(SUBSTR(TRIM(NAME), LENGTH(TRIM(NAME)) - 2, 3)) IN 
+(SELECT LOWER(SUBSTR(TRIM(NAME), LENGTH(TRIM(NAME)) - 2, 3)) AS NAME
+FROM STUDENTS
+WHERE MARKS > 75
+GROUP BY LOWER(SUBSTR(TRIM(NAME), LENGTH(TRIM(NAME)) - 2, 3)))
+ORDER BY LOWER(SUBSTR(TRIM(NAME), LENGTH(TRIM(NAME)) - 2, 3)), ID;
