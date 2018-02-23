@@ -15,7 +15,17 @@ class Solution:
 # --------------------------------------------------------------------------
 
     def insert(self,head,data): 
-    #Complete this method
+        if head is None:
+            return Node(data)
+        else:
+            puntero = head
+            while True:
+                if puntero.next is None:
+                    puntero.next = Node(data)
+                    break
+                else:
+                    puntero = puntero.next
+            return head
 
 # --------------------------------------------------------------------------
 
