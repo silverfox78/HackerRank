@@ -16,5 +16,5 @@ def print_formatted(number):
         print('{} {} {} {}'.format(decimalText, octalText, hexaText.upper(), binaryText))
 
 if __name__ == '__main__':
-    n = 8 #int(raw_input())
+    n = 1254 #int(raw_input())
     print_formatted(n)
