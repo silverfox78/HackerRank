@@ -5,6 +5,13 @@ using System;
 
 class Printer
 {
+    static T PrintArray<T>(T array)
+    {
+        foreach (T item in array)
+        {
+            Console.Writeline(item);
+        }
+    }
 
     
     static void Main(string[] args)
