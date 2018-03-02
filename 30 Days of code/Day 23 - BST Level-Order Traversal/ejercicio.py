@@ -1,5 +1,7 @@
-# >>> Day 22: Binary Search Trees
-# >>> https://www.hackerrank.com/challenges/30-binary-search-trees/problem
+# >>> Day 23: BST Level-Order Traversal
+# >>> https://www.hackerrank.com/challenges/30-binary-trees/problem
+
+import sys
 
 class Node:
     def __init__(self,data):
@@ -18,13 +20,16 @@ class Solution:
                 root.right=cur
         return root
 
-# -------------------------------------------------------------------------------
 
-    def getHeight(self,root):
+# ----------------------------------------------------------------------------
+
+    def levelOrder(self,root):
         #Write your code here
 
 
-# -------------------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------------
 
 T=int(input())
 myTree=Solution()
@@ -32,5 +37,4 @@ root=None
 for i in range(T):
     data=int(input())
     root=myTree.insert(root,data)
-height=myTree.getHeight(root)
-print(height) 
+myTree.levelOrder(root)
