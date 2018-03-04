@@ -19,9 +19,27 @@ class Solution:
         return root
 
 # -------------------------------------------------------------------------------
-
+    def countLeavel(self, node, size):
+        maximo = size
+        if node.left == None and node.right == None:
+            return maximo
+        else:
+            if node.left != None:
+                izq = self.countLeavel(node.left, size + 1)
+                if izq > maximo:
+                    maximo = izq
+            if node.right != None:
+                der = self.countLeavel(node.right, size + 1)
+                if der > maximo:
+                    maximo = der
+        return maximo
+    
     def getHeight(self,root):
-        #Write your code here
+        result = 0
+        if root != None:
+            result = self.countLeavel(root, result)
+        return result
+
 
 
 # -------------------------------------------------------------------------------
