@@ -26,11 +26,47 @@ class Solution:
 
 # ----------------------------------------------------------------------------
 
-    def removeDuplicates(self,head):
-        #Write your code here
+    # def remove(self, heap, value):
+    #     exist = False
+        
+    #     if heap == None:
+    #         return heap
+    #     else:
+    #         puntero = heap
+    #         while(puntero.next != None):
+    #             if puntero.data == value and exist == False:
+    #                 exist = True
+    #             else:
+    #                 if puntero.data == value and exist:
+    #                     print('Elimina: ' + str(puntero.data))
+    #                     puntero = puntero.next
+    #             if puntero.next != None:
+    #                 puntero = puntero.next
+    #     return heap
+    
+    # def removeDuplicates(self,head):
+    #     current = head
+    #     while current:
+    #         print('Busca: ' + str(current.data))
+    #         current = self.remove(current, current.data)
+    #         self.display(current)
+    #         current = current.next
+    #     self.display(head)
+  
   
 
-
+  
+    def removeDuplicates(self,head):
+        if head == None:
+            return head
+        cur = head
+        while cur.next:
+            if cur.data == cur.next.data:
+                cur.next = cur.next.next
+            if cur.next and cur.data != cur.next.data:
+                cur = cur.next
+        return head
+  
 
 
 
